@@ -1,0 +1,67 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      MyMusic
+    </a>
+  </nav>
+  
+  
+  <div class="main container">
+    <div class="row">
+      <div class="col-5">
+        <label>Músicas</label>
+        <div class="form-group">
+          <form #formMusica="ngForm" (ngSubmit)="buscarMusicas(formMusica)" novalidate id="form-musica">
+            <div class="input-group">
+              <input name="nome" placeholder="Digite o nome da Música ou Artista" class="form-control" ngModel required
+                #nome="ngModel">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let erro of musicaErros" class="alert alert-danger">
+          {{erro}}
+        </div>
+        <div *ngFor="let info of musicaInfos" class="alert alert-info">
+          {{info}}
+        </div>
+        <app-table-music #musica [musicas]="getMusicas()" [multiple]="true"></app-table-music>
+        <ngx-loading [show]="carregandoMusicas" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+      </div>
+  
+  
+      <div class="col-2 btn-directions align-self-center">
+        <div class="col-12 text-center">
+          <button type="button" (click)="addMusicasParaPlaylist(musica.musicasSelecionadas)" class="btn btn-outline-primary">&gt;&gt;</button>
+        </div>
+        <div class="col-12 text-center">
+          <button type="button" (click)="removeMusicaDaPlaylist(playlist.musicasSelecionadas)" class="btn btn-outline-secondary">&lt;&lt;</button>
+        </div>
+      </div>
+      
+      
+      <div class="col-5">
+        <label>Playlist</label>
+        <div class="form-group">
+          <form #formPlaylist="ngForm" (ngSubmit)="buscarUsuarios(formPlaylist)" novalidate id="form-usuario">
+            <div class="input-group">
+              <input name="usuario" placeholder="Digite o nome do Usuário" class="form-control" ngModel required #usuario="ngModel">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let erro of playlistErros" class="alert alert-danger">
+            {{erro}}
+          </div>
+          <div *ngFor="let info of playlistInfo" class="alert alert-info">
+            {{info}}
+          </div>
+        <app-table-music #playlist [musicas]="getMusicasFromPlaylist()" [multiple]="false"></app-table-music>
+        <ngx-loading [show]="carregandoMusicasDaPlaylist" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+      </div>
+    </div>
+  
+  </div>
