@@ -52,8 +52,12 @@ export class MainComponent implements OnInit {
           this.carregandoMusicas = false;
 
         }, error => {
-          this.musicaErros.push(TranslateMessagesUtils.getMessageFrom(error.error.mensagem));
           this.carregandoMusicas = false;
+          if (error.error.mensagem != null) {
+            this.musicaErros.push(TranslateMessagesUtils.getMessageFrom(error.error.mensagem));
+          } else {
+            this.musicaErros.push(TranslateMessagesUtils.getMessageFrom('validacoes.erro_interno'));
+          }
         });
     }
   }
@@ -79,8 +83,12 @@ export class MainComponent implements OnInit {
           this.carregandoMusicasDaPlaylist = false;
           this.playlistTable.musicasSelecionadas.clear();
         }, error => {
-          this.playlistErros.push(TranslateMessagesUtils.getMessageFrom(error.error.mensagem));
           this.carregandoMusicasDaPlaylist = false;
+          if (error.error.mensagem != null) {
+            this.playlistErros.push(TranslateMessagesUtils.getMessageFrom(error.error.mensagem));
+          } else {
+            this.playlistErros.push(TranslateMessagesUtils.getMessageFrom('validacoes.erro_interno'));
+          }
         });
     }
   }

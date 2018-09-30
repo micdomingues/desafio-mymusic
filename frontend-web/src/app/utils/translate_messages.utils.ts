@@ -1,4 +1,5 @@
 export const messages = {
+  'validacoes.erro_interno': 'Ops, algum problema ocorreu',
   'validacoes.limite_minimo_nao_atingido': 'Limite de caracteres mínimo não atingido',
   'validacoes.nao_encontrado': 'Não encontrado'
 };
