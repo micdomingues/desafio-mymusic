@@ -1,10 +1,16 @@
-node {
-
-    stage ('Front End Build') {
-        echo 'FRONTEND STARTED' 
-        dir("frontend-web") {
-            sh "pwd"
-            sh 'npm test'
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine' 
+            args '-p 3000:3000' 
+        }
+    }
+    stages {
+        stage('FRONTEND Build') { 
+            steps {
+                sh 'cd frontend-web'
+                sh 'npm install' 
+            }
         }
     }
 }
