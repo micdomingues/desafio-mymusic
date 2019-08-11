@@ -2,7 +2,7 @@ node {
 
     stage ('Front End Build') {
         echo 'FRONTEND STARTED' 
-        dir("folder") {
+        dir("frontend-web") {
             sh "pwd"
             sh 'npm test'
         }
