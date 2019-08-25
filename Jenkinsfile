@@ -22,7 +22,7 @@ pipeline {
                 docker { image 'node:7-alpine' }
             }
             steps {
-                sh 'cd frontend-web && npm run test'
+                sh 'cd frontend-web && npm run ci:test'
             }
         }
         stage('Front-end - Lint') {
