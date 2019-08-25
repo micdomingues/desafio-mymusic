@@ -9,6 +9,14 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+        stage('Front-end - Build') {
+            agent {
+                docker { image 'node:7-alpine' }
+            }
+            steps {
+                sh 'cd frontend-web && npm install'
+            }
+        }
         stage('Front-end - Test') {
             agent {
                 docker { image 'node:7-alpine' }
