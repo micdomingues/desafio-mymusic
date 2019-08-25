@@ -7,9 +7,8 @@ pipeline {
             }
             steps {
                 sh 'mvn --version'
-                sh 'mvn clean install'
             }
-    }
+        }
         stage('Front-end') {
             agent {
                 docker { image 'node:7-alpine' }
