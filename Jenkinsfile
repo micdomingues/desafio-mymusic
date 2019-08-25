@@ -7,7 +7,6 @@ pipeline {
             }
             steps {
                 sh 'mvn --version'
-                sh 'cd registry-server'
                 sh 'mvn clean package'
             }
     }
