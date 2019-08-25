@@ -14,8 +14,7 @@ pipeline {
                 docker { image 'node:7-alpine' }
             }
             steps {
-                sh 'cd frontend-web'
-                sh 'npm run test'
+                sh 'cd frontend-web && npm run test'
             }
         }
         stage('Front-end - Lint') {
@@ -23,8 +22,7 @@ pipeline {
                 docker { image 'node:7-alpine' }
             }
             steps {
-                sh 'cd frontend-web'
-                sh 'npm run lint'
+                sh 'cd frontend-web && npm run lint'
             }
         }
     }
