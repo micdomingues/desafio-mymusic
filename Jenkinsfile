@@ -7,7 +7,8 @@ pipeline {
             }
             steps {
                 sh 'mvn --version'
-                sh 'cd registry-service'
+                sh 'cd registry-server'
+                sh 'mvn clean package'
             }
     }
         stage('Front-end') {
@@ -17,6 +18,7 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'cd frontend-web'
+                sh 'npm -v'
             }
         }
     }
